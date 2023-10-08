@@ -40,7 +40,7 @@ conda install six requests dataclasses psutil --yes
 export CMAKE_PREFIX_PATH=${CONDA_PREFIX:-"$(dirname $(which conda))/../"}
 
 #build pytorch and intel-pytorch-extension
-pip install torch-1.12.0a0+gitfa18ade-cp39-cp39-linux_x86_64.whl
+pip install ../torch-1.12.0a0+gitfa18ade-cp39-cp39-linux_x86_64.whl
 #git clone https://github.com/pytorch/pytorch.git pytorch
 #cd pytorch
 #
