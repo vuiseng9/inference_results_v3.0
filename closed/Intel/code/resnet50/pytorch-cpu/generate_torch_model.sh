@@ -1,7 +1,7 @@
 #!/bin/bash
 
 CONDA_ENV_NAME=rn50-mlperf
-source ~/anaconda3/etc/profile.d/conda.sh
+source $CONDADIR/etc/profile.d/conda.sh
 conda activate ${CONDA_ENV_NAME}
 
 

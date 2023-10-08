@@ -11,9 +11,8 @@ echo "Working directory is ${WORKDIR}"
 mkdir -p ${WORKDIR}
 cd ${WORKDIR}
 
+source $CONDADIR/etc/profile.d/conda.sh
 conda create -n ${CONDA_ENV_NAME} python=3.9 --yes
-
-source ~/anaconda3/etc/profile.d/conda.sh
 conda activate ${CONDA_ENV_NAME}
 
 echo "Installiing dependencies for RN50"
@@ -41,20 +40,21 @@ conda install six requests dataclasses psutil --yes
 export CMAKE_PREFIX_PATH=${CONDA_PREFIX:-"$(dirname $(which conda))/../"}
 
 #build pytorch and intel-pytorch-extension
-git clone https://github.com/pytorch/pytorch.git pytorch
-cd pytorch
-
-git fetch origin pull/76869/head:opt-cat
-git checkout v1.12.0-rc7
-git merge opt-cat --no-edit
-
-git submodule sync
-git submodule update --init --recursive
-git fetch origin pull/89925/head
-git cherry-pick 78cad998e505b667d25ac42f8aaa24409f5031e1
-
-python -m pip install -r requirements.txt
-python setup.py install
+pip install torch-1.12.0a0+gitfa18ade-cp39-cp39-linux_x86_64.whl
+#git clone https://github.com/pytorch/pytorch.git pytorch
+#cd pytorch
+#
+#git fetch origin pull/76869/head:opt-cat
+#git checkout v1.12.0-rc7
+#git merge opt-cat --no-edit
+#
+#git submodule sync
+#git submodule update --init --recursive
+#git fetch origin pull/89925/head
+#git cherry-pick 78cad998e505b667d25ac42f8aaa24409f5031e1
+#
+#python -m pip install -r requirements.txt
+#python setup.py install
 
 cd ${WORKDIR}
 git clone https://github.com/intel/intel-extension-for-pytorch ipex-cpu-dev
@@ -101,10 +101,11 @@ cd ${WORKDIR}
 
 # Build torchvision
 echo "Installiing torch vision"
-git clone https://github.com/pytorch/vision
-cd vision
-python setup.py install
-cd ${WORKDIR}
+pip install torchvision==0.13.0 --no-deps
+#git clone https://github.com/pytorch/vision
+#cd vision
+#python setup.py install
+#cd ${WORKDIR}
 
 # Build OpenCV
 git clone https://github.com/opencv/opencv.git

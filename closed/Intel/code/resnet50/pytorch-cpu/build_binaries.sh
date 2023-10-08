@@ -12,7 +12,7 @@ CONDA_ENV_NAME=rn50-mlperf
 export WORKDIR=${CUR_DIR}/${CONDA_ENV_NAME}
 
 echo "Working directory is ${WORKDIR}"
-source ~/anaconda3/etc/profile.d/conda.sh
+source $CONDADIR/etc/profile.d/conda.sh
 conda activate ${CONDA_ENV_NAME}
 
 export CMAKE_PREFIX_PATH=${CONDA_PREFIX:-"$(dirname $(which conda))/../"}

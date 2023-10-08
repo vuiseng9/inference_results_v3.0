@@ -16,15 +16,22 @@
 
 ### Setup Conda Environment
 + Download and install Anaconda3
+:fire: [VS] I did not use this version of Anaconda, I used current miniconda3, I also did not install it at home drive, hence the need of CONDADIR=$CONDADIR in front of bash <script>.sh . FYI, if we do "source <script>.sh" we do not need the prefix in front of "bash <script>.sh", bash doesn't inherit the variables from caller's shell.
   ```
   wget https://repo.anaconda.com/archive/Anaconda3-2022.05-Linux-x86_64.sh
   bash Anaconda3-2022.05-Linux-x86_64.sh
   ```
 + Setup conda environment to install requirements, and build packages
   ```
-  bash prepare_env.sh
+  CONDADIR=$CONDADIR bash prepare_env.sh
   ```
-
+:fire: :fire: :fire: if you see sklearn error, you can ignore it
+:fire: :fire: :fire: Pls ensure your git config is configured, the env build requires git merging and cherry-picking
+```bash
+  git config --global user.email you@example.com
+  git config --global user.name "Your Name"
+```
+:fire: :fire: :fire: Even the above, it is still unable to be set. Resort to the installing pre-built wheel, pls contact me to get hold of the built wheel
 
 
 ### Download Imagenet Dataset for Calibration
@@ -51,14 +58,14 @@ export CHECKPOINT=resnet50-fp32-model.pth
 ```
 + Generate scales and models
 ```
-bash generate_torch_model.sh
+CONDADIR=$CONDADIR bash generate_torch_model.sh
 ```
 
 The *start* and *end* parts of the model are also saved (respectively named) in ```models```
 
 ### Build 
 ```
-bash build_binaries.sh
+CONDADIR=$CONDADIR bash build_binaries.sh
 ```
 Please follow the [instructions](#run-benchmark-common-for-docker--baremetal) in the end of the page to run the benchmark. 
 
@@ -110,7 +117,7 @@ The *start* and *end* parts of the model are also saved (respectively named) in 
 
 
 ## Run Benchmark (Common for Docker & Baremetal)
-
+:fire: :fire: :fire: Pls update #cores instances according to your server!
 ```
 export DATA_DIR=${PWD}/ILSVRC2012_img_val
 export RN50_START=models/resnet50-start-int8-model.pth

@@ -30,7 +30,7 @@ if [ -z "${RN50_FULL}" ]; then
 fi
 
 CONDA_ENV_NAME=rn50-mlperf
-source ~/anaconda3/etc/profile.d/conda.sh
+source $CONDADIR/etc/profile.d/conda.sh
 conda activate ${CONDA_ENV_NAME}
 
 export MALLOC_CONF="oversize_threshold:1,background_thread:true,metadata_thp:auto,dirty_decay_ms:9000000000,muzzy_decay_ms:9000000000"
