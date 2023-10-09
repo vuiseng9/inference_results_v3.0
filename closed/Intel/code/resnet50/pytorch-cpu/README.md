@@ -31,7 +31,7 @@
   git config --global user.email you@example.com
   git config --global user.name "Your Name"
 ```
-:fire: :fire: :fire: Even the above, it is still unable to be set. Resort to the installing pre-built wheel, pls contact me to get hold of the built wheel
+:fire: :fire: :fire: (Open) Even the above is set, it is still unable to be build. Resort to the installing pre-built wheel, pls contact me to get hold of the built wheel
 
 
 ### Download Imagenet Dataset for Calibration
